@@ -40,3 +40,18 @@ class NoteViews(APIView):
         NotesTable = NoteModel.objects.all()
         NotesTable.delete()
         return Response({'message':'Data deleted successfully'},status=status.HTTP_200_OK)
+
+
+class NoteDeleteOne(APIView):
+
+    #Delete One
+
+    def delete(self,request,id):
+
+        try:
+            print(id)
+            NoteTable = NoteModel.objects.get(id=id)
+            NoteTable.delete()
+            return Response({'message':'Data deleted successfully'},status=status.HTTP_200_OK)
+        except NoteModel.DoesNotExist:
+            return Response({'message':'Data id is not found'},status=status.HTTP_400_BAD_REQUEST)
