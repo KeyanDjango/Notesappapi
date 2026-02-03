@@ -54,3 +54,20 @@ class NoteDeleteOne(APIView):
             return Response({'message':'Data deleted successfully'},status=status.HTTP_200_OK)
         except NoteModel.DoesNotExist:
             return Response({'message':'Data id is not found'},status=status.HTTP_400_BAD_REQUEST)
+
+class NoteUpdateOne(APIView):
+
+    #Update One
+
+    def put(self,request,id):
+        try:
+            
+            tablenote = NoteModel.objects.get(id=id)
+            serializer = NoteSerializer(tablenote,data=request.data)
+        
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data,status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except NoteModel.DoesNotExist:
+            return Response({'message','Data id is not found'},status=status.HTTP_400_BAD_REQUEST)
