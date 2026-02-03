@@ -49,7 +49,6 @@ class NoteDeleteOne(APIView):
     def delete(self,request,id):
 
         try:
-            print(id)
             NoteTable = NoteModel.objects.get(id=id)
             NoteTable.delete()
             return Response({'message':'Data deleted successfully'},status=status.HTTP_200_OK)
