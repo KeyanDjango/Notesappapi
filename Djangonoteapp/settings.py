@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6#-n-g2=em2rk%i)2^$g9frq3*!tf6@vn2#9f%^98(qq6)ovg8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -79,25 +79,25 @@ WSGI_APPLICATION = 'Djangonoteapp.wsgi.application'
 # # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'noteapp_db_y7wv',
-#         'USER': 'noteapp_db_y7wv_user',
-#         'PASSWORD': 'wlSDRRhW2gAojY3IxsnlQInGg4yOkXGw',
-#         'HOST': 'dpg-d622hlvpm1nc73fko3l0-a',
-#         'PORT': '5432',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'noteapp_db_y7wv',
+        'USER': 'noteapp_db_y7wv_user',
+        'PASSWORD': 'wlSDRRhW2gAojY3IxsnlQInGg4yOkXGw',
+        'HOST': 'dpg-d622hlvpm1nc73fko3l0-a',
+        'PORT': '5432',
+    }
+}
 
 
 
