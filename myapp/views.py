@@ -7,6 +7,7 @@ from .serializers import NoteSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from .models import NoteModel
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 def home(request):
@@ -14,7 +15,7 @@ def home(request):
 
 
 class NoteViews(APIView):
-
+    permission_classes =[IsAuthenticated]
     #POST
 
     def post(self,request):
@@ -22,7 +23,7 @@ class NoteViews(APIView):
         serializer = NoteSerializer(data=request.data)
 
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(user=request.user)
             return Response(serializer.data,status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
@@ -30,14 +31,14 @@ class NoteViews(APIView):
     #GET
     def get(self,request):
 
-        NotesTable = NoteModel.objects.all()
+        NotesTable = NoteModel.objects.filter(user=request.user)
         serializer = NoteSerializer(NotesTable,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
     
     #DELETE
     def delete(self,request):
         
-        NotesTable = NoteModel.objects.all()
+        NotesTable = NoteModel.objects.filter(user=request.user)
         NotesTable.delete()
         return Response({'message':'Data deleted successfully'},status=status.HTTP_200_OK)
 
