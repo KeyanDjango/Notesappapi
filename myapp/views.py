@@ -13,6 +13,10 @@ from rest_framework.permissions import IsAuthenticated
 def home(request):
     return HttpResponse('<h1>Hello World');
 
+# # Create your views here.
+# def home(request):
+#     return HttpResponse('<h1>Hello World');
+
 
 class NoteViews(APIView):
     permission_classes =[IsAuthenticated]
