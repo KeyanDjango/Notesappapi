@@ -91,10 +91,10 @@ WSGI_APPLICATION = 'Djangonoteapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'noteapp_db_y7wv',
-        'USER': 'noteapp_db_y7wv_user',
-        'PASSWORD': 'wlSDRRhW2gAojY3IxsnlQInGg4yOkXGw',
-        'HOST': 'dpg-d622hlvpm1nc73fko3l0-a',
+        'NAME': 'noteapp_db_9gvb',
+        'USER': 'noteapp_db_9gvb_user',
+        'PASSWORD': 'J9i8QRi33pJNuGmg31ATAW2zLuzpGo7j',
+        'HOST': 'dpg-d67t883nv86c73e2cta0-a',
         'PORT': '5432',
     }
 }
